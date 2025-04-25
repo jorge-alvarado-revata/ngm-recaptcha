@@ -1,9 +1,9 @@
-import { HttpContext, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpContext, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError }  from 'rxjs';
-import { catchError, shareReplay, tap } from 'rxjs/operators';
+import { Observable }  from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 
@@ -27,7 +27,7 @@ export class CaptchaService {
 
 
   private SERVER_URL_BACKEND1 = environment.apiURLValidateProvider1;
-  private SERVER_URL_BACKEND2 = environment.apiURLValidateProvider2;
+
 
   constructor(private http: HttpClient) { }
 
@@ -43,13 +43,6 @@ export class CaptchaService {
   validateReCaptcha(request: SiteVerifyRequest): Observable<any> {
 
     let URL_BACKEND:string = this.SERVER_URL_BACKEND1 + `/validate/`; 
-
-    return this.sendPost(URL_BACKEND, request);
-  }
-
-  validateTurnstile(request: SiteVerifyRequest): Observable<any> {
-
-    let URL_BACKEND:string = this.SERVER_URL_BACKEND2 + `/validate/`; 
 
     return this.sendPost(URL_BACKEND, request);
   }
