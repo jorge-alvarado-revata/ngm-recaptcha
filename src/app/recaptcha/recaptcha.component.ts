@@ -51,12 +51,6 @@ export class RecaptchaComponent implements OnInit {
       dni: new FormControl('', [Validators.minLength(7), Validators.maxLength(10), Validators.required])
     });
 
-    formTurnstile: FormGroup<UserForm> = new FormGroup<UserForm>(
-      {
-        dni: new FormControl('', [Validators.minLength(7), Validators.maxLength(10), Validators.required])
-      });
-
-
     urlHome: string;
 
     validCaptcha: boolean = false;
